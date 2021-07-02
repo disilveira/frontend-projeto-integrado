@@ -26,6 +26,7 @@
         placeholder="Senha"
         required
       />
+      <p><a href="#">Esqueceu a senha?</a></p>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Acessar
       </button>
