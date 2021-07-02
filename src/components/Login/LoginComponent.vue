@@ -29,13 +29,17 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Acessar
       </button>
-      <p class="mt-5 mb-3 text-muted">PUC Minas - Projeto Integrado de Aplicações</p>
+      <p class="mt-5 mb-3 text-muted">
+        PUC Minas - Projeto Integrado de Aplicações
+      </p>
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  title: 'Login'
+}
 </script>
 
 <style scoped>

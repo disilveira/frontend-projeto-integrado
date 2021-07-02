@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import titleMixin from './mixins/titleMixin'
 import App from './App.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -11,6 +12,7 @@ import HomeComponent from './components/Home/HomeComponent'
 
 Vue.config.productionTip = false
 
+Vue.mixin(titleMixin)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
