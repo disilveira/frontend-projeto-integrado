@@ -6,10 +6,9 @@
           <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="auth-form-transparent text-left p-3">
               <div class="brand-logo">
-                <img src="../../assets/images/logo.svg" alt="logo">
+                <h1>SS Telemática</h1>
               </div>
-              <h4>Bem-vindo de volta!</h4>
-              <h6 class="font-weight-light">Fico feliz em ver você novamente!</h6>
+              <h6 class="font-weight-light">Dashboard de Estatísticas de Frota</h6>
               <form class="pt-3">
                 <div class="form-group">
                   <label for="exampleInputEmail">Usuário</label>

@@ -10,12 +10,8 @@
         justify-content-center
       "
     >
-      <a class="navbar-brand brand-logo mr-5" href="../../index.html"
-        ><img src="../../assets/images/logo.svg" class="mr-2" alt="logo"
-      /></a>
-      <a class="navbar-brand brand-logo-mini" href="../../index.html"
-        ><img src="../../assets/images/logo-mini.svg" alt="logo"
-      /></a>
+      <a class="navbar-brand brand-logo mr-5" href="#"><h4><strong>SS Telemática</strong></h4></a>
+      <a class="navbar-brand brand-logo-mini" href="#"><h4><strong>SS</strong></h4></a>
     </div>
     <div
       class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
