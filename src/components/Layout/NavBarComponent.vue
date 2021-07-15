@@ -10,8 +10,8 @@
         justify-content-center
       "
     >
-      <a class="navbar-brand brand-logo mr-5" href="#"><h4><strong>SS Telemática</strong></h4></a>
-      <a class="navbar-brand brand-logo-mini" href="#"><h4><strong>SS</strong></h4></a>
+      <a class="navbar-brand brand-logo mr-5" href="#"><h3><strong>SS Telemática</strong></h3></a>
+      <a class="navbar-brand brand-logo-mini" href="#"><h3><strong>SS</strong></h3></a>
     </div>
     <div
       class="navbar-menu-wrapper d-flex align-items-center justify-content-end"
@@ -39,11 +39,11 @@
           >
             <a class="dropdown-item">
               <i class="ti-settings text-primary"></i>
-              Settings
+              Configurações
             </a>
             <a class="dropdown-item">
               <i class="ti-power-off text-primary"></i>
-              Logout
+              Sair
             </a>
           </div>
         </li>
