@@ -17,7 +17,6 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>User</th>
                           <th>First name</th>
                           <th>Progress</th>
                           <th>Amount</th>
@@ -26,12 +25,6 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face1.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>Herman Beck</td>
                           <td>
                             <div class="progress">
@@ -49,12 +42,6 @@
                           <td>May 15, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face2.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>Messsy Adam</td>
                           <td>
                             <div class="progress">
@@ -72,12 +59,6 @@
                           <td>July 1, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face3.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>John Richards</td>
                           <td>
                             <div class="progress">
@@ -95,12 +76,6 @@
                           <td>Apr 12, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face4.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>Peter Meggik</td>
                           <td>
                             <div class="progress">
@@ -118,12 +93,6 @@
                           <td>May 15, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face5.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>Edward</td>
                           <td>
                             <div class="progress">
@@ -141,12 +110,6 @@
                           <td>May 03, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face6.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>John Doe</td>
                           <td>
                             <div class="progress">
@@ -164,12 +127,6 @@
                           <td>April 05, 2015</td>
                         </tr>
                         <tr>
-                          <td class="py-1">
-                            <img
-                              src="../../images/faces/face7.jpg"
-                              alt="image"
-                            />
-                          </td>
                           <td>Henry Tom</td>
                           <td>
                             <div class="progress">
@@ -205,12 +162,12 @@
 import NavBarComponent from "../Layout/NavBarComponent.vue";
 import SideBarComponent from "../Layout/SideBarComponent.vue";
 export default {
-  title: "Usuários",
-  name: "UserComponent",
+  name: 'UserComponent',
+  title: 'Usuários',
   components: {
     NavBarComponent,
     SideBarComponent,
-  },
+  }
 };
 </script>
 

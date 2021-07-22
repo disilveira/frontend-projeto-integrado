@@ -71,7 +71,8 @@
 import NavBarComponent from "../Layout/NavBarComponent.vue";
 import SideBarComponent from "../Layout/SideBarComponent.vue";
 export default {
-  title: "Dashboard",
+  name: 'DashboardComponent',
+  title: 'Dashboard',
   components: {
     NavBarComponent,
     SideBarComponent,

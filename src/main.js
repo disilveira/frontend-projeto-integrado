@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import LoginComponent from './components/Login/LoginComponent'
 import DashboardComponent from './components/Dashboard/DashboardComponent'
+import UserComponent from './components/User/UserComponent'
 
 Vue.config.productionTip = false
 
@@ -19,7 +20,8 @@ Vue.use(IconsPlugin)
 
 const routes = [
   { path: '/', name: 'login', component: LoginComponent},
-  { path: '/dashboard', name: 'dashboard', component: DashboardComponent }
+  { path: '/dashboard', name: 'dashboard', component: DashboardComponent },
+  { path: '/users', name: 'users', component: UserComponent},
 ]
 
 const router = new VueRouter({

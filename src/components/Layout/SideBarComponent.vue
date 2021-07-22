@@ -3,11 +3,18 @@
   <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="../../index.html">
+        <router-link to="/dashboard" class="nav-link">
           <i class="ti-shield menu-icon"></i>
           <span class="menu-title">Dashboard</span>
-        </a>
+        </router-link>
       </li>
+      <li class="nav-item">
+        <router-link to="/users" class="nav-link">
+          <i class="ti-user menu-icon"></i>
+          <span class="menu-title">Usuários</span>
+        </router-link>
+      </li>
+
       <li class="nav-item">
         <a
           class="nav-link"
@@ -16,45 +23,29 @@
           aria-expanded="false"
           aria-controls="auth"
         >
-          <i class="ti-user menu-icon"></i>
-          <span class="menu-title">Usuários</span>
+          <i class="ti-write menu-icon"></i>
+          <span class="menu-title">Documentação</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="auth">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/samples/login.html">
-                Login
+              <a class="nav-link" href="https://documenter.getpostman.com/view/12921403/Tz5wXuYJ" target="_blank">
+                API
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/samples/login-2.html">
-                Login 2
+              <a class="nav-link" href="https://github.com/disilveira/api-projeto-integrado" target="_blank">
+                Backend
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../../pages/samples/register.html">
-                Register
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/samples/register-2.html">
-                Register 2
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../../pages/samples/lock-screen.html">
-                Lockscreen
+              <a class="nav-link" href="https://github.com/disilveira/frontend-projeto-integrado" target="_blank">
+                Frontend
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../../documentation/documentation.html">
-          <i class="ti-write menu-icon"></i>
-          <span class="menu-title">Documentação</span>
-        </a>
       </li>
     </ul>
   </nav>
