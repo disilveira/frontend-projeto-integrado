@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuex from 'vuex'
+import modules from './store/modules'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import titleMixin from './mixins/titleMixin'
 import App from './App.vue'
@@ -15,8 +17,13 @@ Vue.config.productionTip = false
 
 Vue.mixin(titleMixin)
 Vue.use(VueRouter)
+Vue.use(Vuex)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+
+export default new Vuex.Store({
+  modules
+})
 
 const routes = [
   { path: '/', name: 'login', component: LoginComponent},
