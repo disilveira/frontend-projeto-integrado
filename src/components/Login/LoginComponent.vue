@@ -36,7 +36,7 @@
                   <a href="#" class="auth-link text-black">Esqueceu sua senha?</a>
                 </div>
                 <div class="my-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="#">ACESSAR</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" @click.prevent="login">ACESSAR</button>
                 </div>
               </form>
             </div>
@@ -54,7 +54,20 @@
 
 <script>
 export default {
-  title: 'Login'
+  name: 'LoginComponent',
+  title: 'Login',
+
+  data(){
+    return {
+
+    }
+  },
+  methods: {
+    login(){
+      this.$router.push('/dashboard');
+    }
+  }
+
 }
 </script>
 
