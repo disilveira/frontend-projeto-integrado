@@ -5,7 +5,16 @@
 </template>
 
 <script>
-export default {}
+import { mapActions } from 'vuex'
+
+export default {
+  mounted () {
+    this.ActionListUsers()
+  },
+  methods: {
+    ...mapActions('users', ['ActionListUsers'])
+  }
+}
 </script>
 
 <style>
