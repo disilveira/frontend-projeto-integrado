@@ -2,6 +2,6 @@ export default [
   {
     path: '/',
     name: 'Home',
-    component: () => import('./Home')
+    component: () => import(/* webpackChunkName: "Home" */ './Home')
   }
 ]
