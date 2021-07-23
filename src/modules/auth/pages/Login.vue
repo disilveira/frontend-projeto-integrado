@@ -98,35 +98,28 @@
 
 <script>
 import { mapActions } from 'vuex'
+
 export default {
   data: () => ({
     form: {
-      email: 'diego.almeida@outlook.com',
-      password: '123456'
+      email: '',
+      password: ''
     }
   }),
+  created () {
+    this.ActionSetUser({
+      name: 'Diego Almeida',
+      email: 'diego.almeida@outlook.com'
+    })
+  },
   methods: {
-    ...mapActions('auth', ['ActionDoLogin']),
-    async submit () {
-      try {
-        await this.ActionDoLogin(this.form)
-        this.$router.push({ name: 'home' })
-      } catch (err) {
-        alert(err.data ? err.data.message : 'Não foi possível fazer login')
-      }
+    ...mapActions('auth', ['ActionSetUser']),
+    submit () {
+      console.log(this.form)
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.login-page {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .card {
-    width: 30%;
-  }
-}
 </style>
