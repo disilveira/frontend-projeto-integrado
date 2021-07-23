@@ -1,4 +1,4 @@
-import services from '../../../http'
+import services from '@/http'
 import * as storage from '../storage'
 import * as types from './mutation-types'
 
@@ -25,7 +25,7 @@ export const ActionCheckToken = ({ dispatch, state }) => {
 }
 
 export const ActionLoadSession = ({ dispatch }) => {
-  return new Promise((resolve, reject) => {
+  return Promise((resolve, reject) => {
     try {
       const { data: { user } } = services.auth.loadSession()
       dispatch('ActionSetUser', user)
