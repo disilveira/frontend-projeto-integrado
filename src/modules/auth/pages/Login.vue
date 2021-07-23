@@ -106,16 +106,12 @@ export default {
       password: ''
     }
   }),
-  created () {
-    this.ActionSetUser({
-      name: 'Diego Almeida',
-      email: 'diego.almeida@outlook.com'
-    })
-  },
   methods: {
-    ...mapActions('auth', ['ActionSetUser']),
+    ...mapActions('auth', ['ActionDoLogin']),
     submit () {
-      console.log(this.form)
+      this.ActionDoLogin(this.form).then(res => {
+        console.log(res.data)
+      })
     }
   }
 }
