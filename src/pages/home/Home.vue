@@ -2,6 +2,8 @@
   <div class="home">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
+        <NavBarComponent :user_name="user.user_name"/>
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -67,11 +69,17 @@
 
 <script>
 import { mapState } from 'vuex'
+import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
+import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 
 export default {
   name: 'Home',
   computed: {
     ...mapState('auth', ['user'])
+  },
+  components: {
+    NavBarComponent,
+    SideBarComponent
   }
 }
 </script>
