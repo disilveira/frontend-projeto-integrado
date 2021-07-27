@@ -1,5 +1,4 @@
 <template>
-  <!-- partial:../../partials/_navbar.html -->
   <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div
       class="
@@ -38,10 +37,6 @@
             aria-labelledby="profileDropdown"
           >
             <a class="dropdown-item">
-              <i class="ti-settings text-primary"></i>
-              Configurações
-            </a>
-            <a class="dropdown-item">
               <i class="ti-power-off text-primary"></i>
               Sair
             </a>
@@ -57,7 +52,6 @@
       </button>
     </div>
   </nav>
-  <!-- partial -->
 </template>
 
 <script>

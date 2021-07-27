@@ -18,6 +18,8 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>E-mail</th>
+                            <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -25,6 +27,8 @@
                             <td>{{ user.user_id }}</td>
                             <td>{{ user.name }}</td>
                             <td>{{ user.email }}</td>
+                            <td><router-link :to="{ name: 'User-Edit', params: { id: user.user_id } }" >Editar</router-link></td>
+                            <td></td>
                           </tr>
                         </tbody>
                       </table>
