@@ -3,7 +3,7 @@
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
         <NavBarComponent :user_name="user.user_name"/>
-        <SideBarComponent />
+        <SideBarComponent :is_admin="user.is_admin"/>
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
