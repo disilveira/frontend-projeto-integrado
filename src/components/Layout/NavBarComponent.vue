@@ -36,10 +36,7 @@
             class="dropdown-menu dropdown-menu-right navbar-dropdown"
             aria-labelledby="profileDropdown"
           >
-            <a class="dropdown-item">
-              <i class="ti-power-off text-primary"></i>
-              Sair
-            </a>
+          <logout></logout>
           </div>
         </li>
       </ul>
@@ -55,10 +52,13 @@
 </template>
 
 <script>
+import Logout from '../../modules/auth/pages/Logout.vue'
 export default {
   name: 'NavBarComponent',
   props: ['user_name'],
-  components: {}
+  components: {
+    Logout
+  }
 }
 </script>
 
