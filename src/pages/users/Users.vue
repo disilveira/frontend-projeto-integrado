@@ -11,6 +11,11 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Lista de Usuários</h4>
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <router-link :to="{ name: 'User-Create' }" class="btn btn-xs btn-success">Cadastrar Usuário</router-link>
+                        </div>
+                    </div>
                     <div class="table-responsive">
                       <table class="table table-striped">
                         <thead>
@@ -27,8 +32,8 @@
                             <td>{{ user.user_id }}</td>
                             <td>{{ user.name }}</td>
                             <td>{{ user.email }}</td>
-                            <td><router-link :to="{ name: 'User-Edit', params: { id: user.user_id } }" >Editar</router-link></td>
-                            <td></td>
+                            <td width="1%"><router-link :to="{ name: 'User-Edit', params: { id: user.user_id } }" class="btn btn-xs btn-primary">Editar</router-link></td>
+                            <td width="1%"><router-link :to="{ name: 'User-Delete', params: { id: user.user_id } }" class="btn btn-xs btn-danger">Excluir</router-link></td>
                           </tr>
                         </tbody>
                       </table>

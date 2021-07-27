@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/users/:id',
+    path: '/user/:id',
     name: 'User-Edit',
     component: () => import(/* webpackChunkName: "User-Edit" */ './UserEdit')
   }
