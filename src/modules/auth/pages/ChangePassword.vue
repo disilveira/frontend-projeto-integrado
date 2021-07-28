@@ -35,7 +35,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail">Nova Senha</label>
+                  <label for="exampleInputPassword">Nova Senha</label>
                   <div class="input-group">
                     <div class="input-group-prepend bg-transparent">
                       <span
@@ -47,7 +47,7 @@
                     <input
                       type="password"
                       class="form-control form-control-lg border-left-0"
-                      id="exampleInputEmail"
+                      id="exampleInputPassword"
                       placeholder="Nova Senha"
                       v-model="password"
                       required
@@ -57,7 +57,7 @@
                 <div
                   class="my-2 d-flex justify-content-between align-items-center"
                 >
-                  <router-link :to="{ name: 'Home' }"
+                  <router-link :to="{ name: 'Login' }"
                         >Ir para o login</router-link
                       >
                 </div>
@@ -107,8 +107,8 @@ export default {
   methods: {
     submit () {
       try {
-        const postData = { email: this.email }
-        this.$http.post('https://api-projeto-integrado.herokuapp.com/users/forgotPassword', postData).then(res => {
+        const postData = { email: this.email, password: this.password }
+        this.$http.post(`https://api-projeto-integrado.herokuapp.com/users/passwordReset/?token=${this.$route.query.token}&id=${this.$route.query.id}`, postData).then(res => {
           alert(res.body.message)
           this.$router.push({ name: 'Login' })
         })
