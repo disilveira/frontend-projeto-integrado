@@ -10,18 +10,18 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Editar Usuário - {{ user_to_edit[0].name }}</h4>
-                    <form class="forms-sample">
+                    <h4 class="card-title">
+                      Editar Usuário - {{ user_to_edit[0].name }}
+                    </h4>
+                    <form @submit.prevent="submit()" class="forms-sample">
                       <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="hidden" :value="user_to_edit[0].user_id">
-                        <input type="hidden" :value="user_to_edit[0].is_admin">
-                        <input type="hidden" :value="user_to_edit[0].is_active">
                         <input
                           type="text"
                           class="form-control"
                           id="nome"
-                          :value="user_to_edit[0].name"
+                          v-model="name"
+                          required
                           placeholder="Nome"
                         />
                       </div>
@@ -31,14 +31,43 @@
                           type="email"
                           class="form-control"
                           id="email"
-                          :value="user_to_edit[0].email"
+                          v-model="email"
+                          required
                           placeholder="E-mail"
                         />
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2">
-                        Atualizar
-                      </button>
-                      <router-link :to="{ name: 'Users' }" class="btn btn-light">Voltar</router-link>
+
+                      <div class="form-group">
+                        <label for="is_admin">Administrador?</label>
+                        <select
+                          type="text"
+                          class="form-control"
+                          id="is_admin"
+                          v-model="is_admin"
+                          required
+                        >
+                          <option value="1">SIM</option>
+                          <option value="0" selected>NÃO</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="is_active">Ativo?</label>
+                        <select
+                          type="text"
+                          class="form-control"
+                          id="is_active"
+                          v-model="is_active"
+                          required
+                        >
+                          <option value="1" selected>SIM</option>
+                          <option value="0">NÃO</option>
+                        </select>
+                      </div>
+                      <button class="btn btn-primary mr-2">Atualizar</button>
+                      <router-link :to="{ name: 'Users' }" class="btn btn-light"
+                        >Voltar</router-link
+                      >
                     </form>
                   </div>
                 </div>
@@ -57,16 +86,50 @@ import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
 import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 
 export default {
-  name: 'UserEdit',
+  data: function () {
+    return {
+      name: '',
+      email: '',
+      is_admin: '',
+      is_active: ''
+    }
+  },
+  methods: {
+    ...mapActions('showUser', ['ActionFindUser']),
+    submit () {
+      try {
+        const postData = {
+          user_id: this.$route.params.id,
+          name: this.name,
+          email: this.email,
+          is_admin: this.is_admin,
+          is_active: this.is_active
+        }
+        this.$http
+          .patch('https://api-projeto-integrado.herokuapp.com/users', postData)
+          .then((res) => {
+            alert(res.body.message)
+            this.$router.push({ name: 'Users' })
+          })
+      } catch (err) {
+        alert(
+          err.body ? err.body.message : 'Não foi possível realizar o cadastro'
+        )
+      }
+    }
+  },
   mounted () {
     this.ActionFindUser(this.$route.params.id)
+    this.$http.get('https://api-projeto-integrado.herokuapp.com/users/' + this.$route.params.id).then(res => {
+      this.name = res.body[0].name
+      this.email = res.body[0].email
+      this.is_admin = res.body[0].is_admin
+      this.is_active = res.body[0].is_active
+    })
   },
   computed: {
     ...mapState('showUser', ['user_to_edit']),
     ...mapState('auth', ['user'])
-  },
-  methods: {
-    ...mapActions('showUser', ['ActionFindUser'])
   },
   components: {
     NavBarComponent,

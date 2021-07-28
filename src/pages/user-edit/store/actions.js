@@ -6,3 +6,9 @@ export const ActionFindUser = ({ commit }, payload) => (
     commit(types.SET_USER_TO_EDIT, res.data)
   })
 )
+
+export const ActionUpdateUser = (payload) => {
+  return services.showUser.updateUser(payload).then(res => {
+    console.log(res)
+  })
+}
