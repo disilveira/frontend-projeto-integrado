@@ -41,8 +41,7 @@ export default {
   methods: {
     submit () {
       try {
-        const postData = { user_id: this.$route.params.id }
-        this.$http.delete('https://api-projeto-integrado.herokuapp.com/users', postData).then(res => {
+        this.$http.delete('https://api-projeto-integrado.herokuapp.com/users/' + this.$route.params.id).then(res => {
           alert(res.body.message)
           this.$router.push({ name: 'Users' })
         })
