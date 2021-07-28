@@ -29,27 +29,7 @@
                       class="form-control form-control-lg border-left-0"
                       id="exampleInputEmail"
                       placeholder="Email"
-                      v-model="form.email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword">Senha</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend bg-transparent">
-                      <span
-                        class="input-group-text bg-transparent border-right-0"
-                      >
-                        <i class="ti-lock text-primary"></i>
-                      </span>
-                    </div>
-                    <input
-                      type="password"
-                      class="form-control form-control-lg border-left-0"
-                      id="exampleInputPassword"
-                      placeholder="Senha"
-                      v-model="form.password"
+                      v-model="email"
                       required
                     />
                   </div>
@@ -57,8 +37,8 @@
                 <div
                   class="my-2 d-flex justify-content-between align-items-center"
                 >
-                  <router-link :to="{ name: 'RequestPassword' }"
-                        >Esqueceu sua senha?</router-link
+                  <router-link :to="{ name: 'Home' }"
+                        >Ir para o login</router-link
                       >
                 </div>
                 <div class="my-3">
@@ -69,7 +49,7 @@
                       auth-form-btn
                     "
                   >
-                    ACESSAR
+                    RECUPERAR
                   </button>
                 </div>
               </form>
@@ -97,21 +77,20 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
-  data: () => ({
-    form: {
-      email: '',
-      password: ''
+  data: function () {
+    return {
+      email: ''
     }
-  }),
+  },
   methods: {
-    ...mapActions('auth', ['ActionDoLogin']),
-    async submit () {
+    submit () {
       try {
-        await this.ActionDoLogin(this.form)
-        this.$router.push({ name: 'Home' })
+        const postData = { email: this.email }
+        this.$http.post('https://api-projeto-integrado.herokuapp.com/users/forgotPassword', postData).then(res => {
+          alert('E-mail com os dados de recuperação de senha enviado')
+          this.$router.push({ name: 'Login' })
+        })
       } catch (err) {
         alert(err.data ? err.data.message : 'Não foi possível efetuar o login')
       }
