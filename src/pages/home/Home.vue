@@ -7,6 +7,28 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                        <h4 class="card-title">Período</h4>
+                        <p class="card-description">
+                            Filtre os dados em um período específico
+                        </p>
+                        <form class="form-inline">
+                            <label class="sr-only" for="dataInicial">Data Inicial</label>
+                            <input type="date" v-model="dataInicial" class="form-control mb-2 mr-sm-2" id="dataInicial" placeholder="Data Inicial">
+                            até
+                            <label class="sr-only" for="dataFinal">Data Final</label>
+                            <div class="input-group ml-2 mb-2 mr-sm-2">
+                            <input type="date" v-model="dataFinal" class="form-control" id="dataFinal" placeholder="Data Final">
+                            </div>
+                        </form>
+                            <button class="btn btn-primary mb-2" @click="getFilteredData()">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
               <div class="col-md-3 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
@@ -123,6 +145,8 @@ export default {
       totalTripKm: '',
       totalTripTime: '',
       tripAverageTime: '',
+      dataInicial: '2020-07-01',
+      dataFinal: '2020-07-31',
       arrTotalKm: [],
       totalKmChartColors: {
         borderColor: '#077187',
@@ -158,14 +182,14 @@ export default {
     }
   },
   methods: {
-    getChartdata: async function () {
-      await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips').then((res) => {
+    getChartdata: async function (startDate, endDate) {
+      await this.$http.get(`https://api-projeto-integrado.herokuapp.com/trips/?startDate=${startDate}&endDate=${endDate}`).then((res) => {
         this.arrTotalKm = JSON.parse(JSON.stringify(res.body))
         this.arrTotalTime = JSON.parse(JSON.stringify(res.body))
       })
     },
-    getTopChartdata: async function () {
-      await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/vehicles-numbers').then((res) => {
+    getTopChartdata: async function (startDate, endDate) {
+      await this.$http.get(`https://api-projeto-integrado.herokuapp.com/trips/vehicles-numbers/?startDate=${startDate}&endDate=${endDate}`).then((res) => {
         this.arrTopVehicleKm = JSON.parse(JSON.stringify(res.body))
         this.arrTopVehicleTime = JSON.parse(JSON.stringify(res.body))
       })
@@ -177,11 +201,15 @@ export default {
         this.totalTripTime = res.body[0].totalTripTime
         this.tripAverageTime = res.body[0].tripAverageTime
       })
+    },
+    getFilteredData: function () {
+      this.getChartdata(this.dataInicial, this.dataFinal)
+      this.getTopChartdata(this.dataInicial, this.dataFinal)
     }
   },
   created () {
-    this.getChartdata()
-    this.getTopChartdata()
+    this.getChartdata(this.dataInicial, this.dataFinal)
+    this.getTopChartdata(this.dataInicial, this.dataFinal)
     this.getTripNumbers()
   }
 }
