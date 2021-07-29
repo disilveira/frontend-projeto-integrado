@@ -123,11 +123,11 @@ export default {
     }
   },
   async created () {
-    await this.$http.get('http://localhost:3000/trips').then((res) => {
+    await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips').then((res) => {
       const dataArray = res.body
       this.arrTotalKm = dataArray
     })
-    await this.$http.get('http://localhost:3000/trips/numbers').then((res) => {
+    await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/numbers').then((res) => {
       this.totalVehicles = res.body[0].totalVehicles
       this.totalTripKm = res.body[0].totalTripKm
       this.totalTripTime = res.body[0].totalTripTime
