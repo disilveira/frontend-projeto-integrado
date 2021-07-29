@@ -2,8 +2,8 @@
   <div class="home">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
-        <NavBarComponent :user_name="user.user_name" />
-        <SideBarComponent :is_admin="user.is_admin" />
+        <NavBarComponent />
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -62,7 +62,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
 import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 
@@ -86,9 +85,6 @@ export default {
         alert(err.data ? err.data.message : 'Não foi possível cadastrar o usuário')
       }
     }
-  },
-  computed: {
-    ...mapState('auth', ['user'])
   },
   components: {
     NavBarComponent,

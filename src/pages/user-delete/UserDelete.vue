@@ -2,8 +2,8 @@
   <div class="home">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
-        <NavBarComponent :user_name="user.user_name" />
-        <SideBarComponent :is_admin="user.is_admin" />
+        <NavBarComponent />
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
 import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 
@@ -54,9 +53,6 @@ export default {
     this.$http.get('https://api-projeto-integrado.herokuapp.com/users/' + this.$route.params.id).then(res => {
       this.user_data = res.body[0]
     })
-  },
-  computed: {
-    ...mapState('auth', ['user'])
   },
   components: {
     NavBarComponent,

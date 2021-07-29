@@ -2,8 +2,8 @@
   <div id="users">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
-        <NavBarComponent :user_name="user.user_name"/>
-        <SideBarComponent :is_admin="user.is_admin"/>
+        <NavBarComponent />
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -60,8 +60,7 @@ export default {
     this.ActionListUsers()
   },
   computed: {
-    ...mapState('users', ['users']),
-    ...mapState('auth', ['user'])
+    ...mapState('users', ['users'])
   },
   methods: {
     ...mapActions('users', ['ActionListUsers'])

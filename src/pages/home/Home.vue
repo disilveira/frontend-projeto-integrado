@@ -2,8 +2,8 @@
   <div class="home">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
-        <NavBarComponent :user_name="user.user_name" />
-        <SideBarComponent :is_admin="user.is_admin" />
+        <NavBarComponent />
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -82,7 +82,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
 import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 import LineChart from '../../components/Charts/LineChart.vue'
@@ -125,7 +124,9 @@ export default {
   async created () {
     await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips').then((res) => {
       const dataArray = res.body
-      this.arrTotalKm = dataArray
+      dataArray.forEach(el => {
+        this.arrTotalKm.push({ date: el.date, totalKm: el.tripKm })
+      })
     })
     await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/numbers').then((res) => {
       this.totalVehicles = res.body[0].totalVehicles
@@ -133,9 +134,6 @@ export default {
       this.totalTripTime = res.body[0].totalTripTime
       this.tripAverageTime = res.body[0].tripAverageTime
     })
-  },
-  computed: {
-    ...mapState('auth', ['user'])
   }
 }
 </script>

@@ -7,7 +7,7 @@
           <span class="menu-title">Dashboard</span>
         </router-link>
       </li>
-      <li v-if="is_admin === 1" class="nav-item">
+      <li v-if="is_admin == 1" class="nav-item">
         <router-link :to="{ name: 'Users' }" class="nav-link">
           <i class="ti-user menu-icon"></i>
           <span class="menu-title">Usuários</span>
@@ -20,7 +20,9 @@
 <script>
 export default {
   name: 'SideBarComponent',
-  props: ['is_admin'],
+  data: () => ({
+    is_admin: localStorage.getItem('userRole')
+  }),
   components: {}
 }
 </script>

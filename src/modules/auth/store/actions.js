@@ -39,6 +39,8 @@ export const ActionLoadSession = ({ dispatch }) => {
 
 export const ActionSetUser = ({ commit }, payload) => {
   commit(types.SET_USER, payload)
+  storage.setLocalUser(payload.user_name)
+  storage.setLocalUserRole(payload.is_admin)
 }
 
 export const ActionSetToken = ({ commit }, payload) => {

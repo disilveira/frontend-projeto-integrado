@@ -2,8 +2,8 @@
   <div class="home">
     <div class="container-scroller">
       <div class="container-fluid page-body-wrapper">
-        <NavBarComponent :user_name="user.user_name" />
-        <SideBarComponent :is_admin="user.is_admin" />
+        <NavBarComponent />
+        <SideBarComponent />
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
@@ -128,8 +128,7 @@ export default {
     })
   },
   computed: {
-    ...mapState('showUser', ['user_to_edit']),
-    ...mapState('auth', ['user'])
+    ...mapState('showUser', ['user_to_edit'])
   },
   components: {
     NavBarComponent,

@@ -55,7 +55,9 @@
 import Logout from '../../modules/auth/pages/Logout.vue'
 export default {
   name: 'NavBarComponent',
-  props: ['user_name'],
+  data: () => ({
+    user_name: localStorage.getItem('userName')
+  }),
   components: {
     Logout
   }
