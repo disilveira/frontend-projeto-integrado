@@ -69,7 +69,25 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Tempo de Viagem Diário</h4>
-                    <bar-chart :key="arrTotalTime.length" :chartData="arrTotalTime" :options="chartOptions" label="Tempo Viagem Diário" :chartColors="totalTimeChartColors"></bar-chart>
+                    <bar-chart :key="arrTotalTime.length" :chartData="arrTotalTime" :options="chartOptions" label="Tempo Viagem Diário em Horas" :chartColors="totalTimeChartColors"></bar-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">TOP 10 KM Rodado</h4>
+                    <radar-chart :key="arrTopVehicleKm.length" :chartData="arrTopVehicleKm" :options="chartOptions" label="Top 10 KM Rodado" :chartColors="totalTopVehicleKmChartColors"></radar-chart>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Top 10 Tempo Rodado em Horas</h4>
+                    <polar-chart :key="arrTopVehicleTime.length" :chartData="arrTopVehicleTime" :options="chartOptions" label="Top 10 Tempo Rodado" :chartColors="totalTopVehicleTimeChartColors"></polar-chart>
                   </div>
                 </div>
               </div>
@@ -86,6 +104,8 @@ import NavBarComponent from '../../components/Layout/NavBarComponent.vue'
 import SideBarComponent from '../../components/Layout/SideBarComponent.vue'
 import LineChart from '../../components/Charts/LineChart.vue'
 import BarChart from '../../components/Charts/BarChart.vue'
+import RadarChart from '../../components/Charts/RadarChart.vue'
+import PolarChart from '../../components/Charts/PolarChart.vue'
 
 export default {
   name: 'Home',
@@ -93,7 +113,9 @@ export default {
     NavBarComponent,
     SideBarComponent,
     LineChart,
-    BarChart
+    BarChart,
+    RadarChart,
+    PolarChart
   },
   data () {
     return {
@@ -115,6 +137,20 @@ export default {
         pointBackgroundColor: '#858EAB',
         backgroundColor: '#858EAB'
       },
+      arrTopVehicleKm: [],
+      totalTopVehicleKmChartColors: {
+        borderColor: '#190B28',
+        pointBorderColor: '#190B28',
+        pointBackgroundColor: '#E55381',
+        backgroundColor: '#E55381'
+      },
+      arrTopVehicleTime: [],
+      totalTopVehicleTimeChartColors: {
+        borderColor: '#E06D06',
+        pointBorderColor: '#E06D06',
+        pointBackgroundColor: '#402A2C',
+        backgroundColor: '#402A2C'
+      },
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false
@@ -128,6 +164,12 @@ export default {
         this.arrTotalTime = JSON.parse(JSON.stringify(res.body))
       })
     },
+    getTopChartdata: async function () {
+      await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/vehicles-numbers').then((res) => {
+        this.arrTopVehicleKm = JSON.parse(JSON.stringify(res.body))
+        this.arrTopVehicleTime = JSON.parse(JSON.stringify(res.body))
+      })
+    },
     getTripNumbers: async function () {
       await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/numbers').then((res) => {
         this.totalVehicles = res.body[0].totalVehicles
@@ -139,6 +181,7 @@ export default {
   },
   created () {
     this.getChartdata()
+    this.getTopChartdata()
     this.getTripNumbers()
   }
 }
