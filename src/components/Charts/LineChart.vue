@@ -1,5 +1,6 @@
 <script>
 import { Line } from 'vue-chartjs'
+
 export default {
   extends: Line,
   props: {
@@ -18,7 +19,7 @@ export default {
   },
   mounted () {
     const dates = this.chartData.map(d => d.date)
-    const totals = this.chartData.map(d => d.totalKm)
+    const totals = this.chartData.map(d => d.tripKm)
 
     const {
       borderColor,

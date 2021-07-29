@@ -61,7 +61,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">KM Rodado da Frota</h4>
-                    <line-chart :chartData="arrTotalKm" :options="chartOptions" label="KM Rodado Diário" :chartColors="totalKmChartColors"></line-chart>
+                    <line-chart :key="arrTotalKm.length" :chartData="arrTotalKm" :options="chartOptions" label="KM Rodado Diário" :chartColors="totalKmChartColors"></line-chart>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Tempo de Viagem Diário</h4>
-                    <bar-chart :chartData="arrTotalTime" :options="chartOptions" label="Tempo Viagem Diário" :chartColors="totalTimeChartColors"></bar-chart>
+                    <bar-chart :key="arrTotalTime.length" :chartData="arrTotalTime" :options="chartOptions" label="Tempo Viagem Diário" :chartColors="totalTimeChartColors"></bar-chart>
                   </div>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default {
     LineChart,
     BarChart
   },
-  data: function () {
+  data () {
     return {
       totalVehicles: '',
       totalTripKm: '',
@@ -121,19 +121,25 @@ export default {
       }
     }
   },
-  async created () {
-    await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips').then((res) => {
-      const dataArray = res.body
-      dataArray.forEach(el => {
-        this.arrTotalKm.push({ date: el.date, totalKm: el.tripKm })
+  methods: {
+    getChartdata: async function () {
+      await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips').then((res) => {
+        this.arrTotalKm = JSON.parse(JSON.stringify(res.body))
+        this.arrTotalTime = JSON.parse(JSON.stringify(res.body))
       })
-    })
-    await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/numbers').then((res) => {
-      this.totalVehicles = res.body[0].totalVehicles
-      this.totalTripKm = res.body[0].totalTripKm
-      this.totalTripTime = res.body[0].totalTripTime
-      this.tripAverageTime = res.body[0].tripAverageTime
-    })
+    },
+    getTripNumbers: async function () {
+      await this.$http.get('https://api-projeto-integrado.herokuapp.com/trips/numbers').then((res) => {
+        this.totalVehicles = res.body[0].totalVehicles
+        this.totalTripKm = res.body[0].totalTripKm
+        this.totalTripTime = res.body[0].totalTripTime
+        this.tripAverageTime = res.body[0].tripAverageTime
+      })
+    }
+  },
+  created () {
+    this.getChartdata()
+    this.getTripNumbers()
   }
 }
 </script>
