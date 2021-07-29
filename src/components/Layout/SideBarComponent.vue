@@ -3,7 +3,7 @@
     <ul class="nav">
       <li class="nav-item">
         <router-link :to="{ name: 'Home' }" class="nav-link">
-          <i class="ti-shield menu-icon"></i>
+          <i class="ti-dashboard menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </router-link>
       </li>
